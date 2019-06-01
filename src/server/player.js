@@ -1,7 +1,8 @@
 class Player {
-  constructor() {
+  constructor(id) {
     this.x = 100;
     this.y = 100;
+    this.id = id;
     this.speed = 4;
     // this.movable = true;
     this.pressed = {
@@ -22,16 +23,16 @@ class Player {
       this.moveDown();
   }
   moveLeft() {
-    this.x -= speed;
+    this.x -= this.speed;
   }
   moveUp() {
-    this.y -= speed;
+    this.y -= this.speed;
   }
   moveRight() {
-    this.x += speed;
+    this.x += this.speed;
   }
   moveDown() {
-    this.y += speed;
+    this.y += this.speed;
   }
 }
 
