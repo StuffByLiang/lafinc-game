@@ -1,4 +1,5 @@
 var Player = require('./player.js');
+var Block = require('./block.js');
 
 class Game {
   constructor() {
@@ -6,7 +7,9 @@ class Game {
     this.settings = {
       FPS: 60
     }
+    this.blocks = [];
     this.tick = setInterval(this.update.bind(this), 1000/this.settings.FPS);
+    this.newBlock(200, 200, 64, 64, "wall")
   }
   update() {
     var data=[];
@@ -46,5 +49,15 @@ class Game {
       callbackFn(this.players[id]);
     }
   }
+  newBlock(x, y, width, height, type){
+    this.blocks.push(new Block(x, y, width, height, type));
+  }
+  iterateBlocks(callbackFn){
+    //allows iteration throgh every block
+    for (var i in this.blocks){
+      callbackFn(this.blocks[i]);
+    }
+  }
 }
+
 module.exports = Game;

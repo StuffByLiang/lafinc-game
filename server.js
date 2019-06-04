@@ -15,6 +15,7 @@ io.on('connection', function(socket){
 
   //send the connected client list of all players
   var playerData = [];
+  var blockData = [];
   game.iteratePlayers((player) => {
     var data = {
       x: player.x,
@@ -24,7 +25,22 @@ io.on('connection', function(socket){
 
     playerData.push(data);
   });
+
   socket.emit('connectedPlayers', playerData);
+
+  game.iterateBlocks((block) => {
+    var data = {
+      x: block.x,
+      y: block.y,
+      width: block.width,
+      height: block.height,
+      type: block.type,
+    }
+
+    blockData.push(data);
+  });
+
+  socket.emit('createBlocks', blockData);
 
   //send to every other client that a new one has connected
   socket.broadcast.emit('newPlayer', game.getPlayerById(socket.id)); // send everyone the data of self

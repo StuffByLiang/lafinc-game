@@ -27,4 +27,12 @@ socket.on('updatePlayers', (data) => {
   }
 })
 
+socket.on('createBlocks', (data) => {
+    //This recieves all the data for the blocks create on the screen
+    for(var block of data) {
+        addBlock(block)
+    }
+
+})
+
 }
