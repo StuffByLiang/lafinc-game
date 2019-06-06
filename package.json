@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "line-reader": "^0.4.0",
+    "linereader": "^1.1.0",
     "nodemon": "^1.19.1",
     "socket-io": "^1.0.0",
     "socket.io": "^2.2.0"

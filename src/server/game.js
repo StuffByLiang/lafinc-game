@@ -1,5 +1,7 @@
 var Player = require('./player.js');
 var Block = require('./block.js');
+var fs = require("fs");
+var readline = require('readline');
 
 class Game {
   constructor() {
@@ -9,7 +11,29 @@ class Game {
     }
     this.blocks = [];
     this.tick = setInterval(this.update.bind(this), 1000/this.settings.FPS);
-    this.newBlock(200, 200, 64, 64, "wall")
+
+    this.readMap("maps/map1")
+    //this.newBlock(200, 200, 64, 64, "wall")
+  }
+  readMap(mapFile){
+    var x, y, width, height, type;
+
+    var myInterface = readline.createInterface({
+      input: fs.createReadStream(mapFile)
+    });
+
+    myInterface.on('line', function (line) {
+      line = line.split(" ");
+      console.log(line)
+       x = parseInt(line[0], 10);
+       y = parseInt(line[1], 10);
+       width = parseInt(line[2], 10);
+       height = parseInt(line[3], 10);
+       type = line[4];
+      //console.log(lineno);
+        game.newBlock(x, y, width, height, type);
+        console.log(x, y, width, height, type);
+    });
   }
   update() {
     var data=[];
