@@ -5,7 +5,7 @@ class Player {
     this.width = 48;
     this.height = 48;
     this.id = id;
-    this.speed = 32;
+    this.speed = 4;
     // this.movable = true;
     this.pressed = {
       left: false,
