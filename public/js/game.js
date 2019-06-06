@@ -43,7 +43,7 @@ function addPlayer(playerData) {
 function addBlock(blockData){
   var {x, y, type, width, height} = blockData;
 
-  var block = game.add.image(x, y, type).setOrigin(0.5, 0.5).setDisplaySize(width, height);
+  var block = game.add.image(x, y, 'player').setOrigin(0.5, 0.5).setDisplaySize(width, height);
 
   for( var i in blockData ) {
     block[i] = blockData[i];
