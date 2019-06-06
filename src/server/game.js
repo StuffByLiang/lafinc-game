@@ -24,15 +24,18 @@ class Game {
 
     myInterface.on('line', function (line) {
       line = line.split(" ");
-      console.log(line)
-       x = parseInt(line[0], 10);
-       y = parseInt(line[1], 10);
-       width = parseInt(line[2], 10);
-       height = parseInt(line[3], 10);
-       type = line[4];
-      //console.log(lineno);
-        game.newBlock(x, y, width, height, type);
-        console.log(x, y, width, height, type);
+      //reads map files line by line for blocks
+
+      y = parseInt(line[1], 10);
+      x = parseInt(line[0], 10);
+      width = parseInt(line[2], 10);
+      height = parseInt(line[3], 10);
+      type = line[4];
+      //saves temp block parameters
+
+      game.newBlock(x, y, width, height, type);
+      //creates each new block
+
     });
   }
   update() {
