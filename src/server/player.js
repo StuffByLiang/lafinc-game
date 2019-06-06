@@ -56,9 +56,11 @@ class Player {
     }
 
     game.iterateBlocks((block) => {
+      if(this.x - block.x <= this.speed && this.x - block.x > 0) this.x -= this.x - block.x - this.speed;
+      if(block.x - this.x <= this.speed && block.x - this.x > 0) this.x -= block.x - this.x - this.speed;
+      if(this.y - block.y <= this.speed && this.y - block.y > 0) this.y -= this.y - block.y - this.speed;
+      if(block.y - this.y <= this.speed && block.y - this.y > 0) this.y -= block.y - this.y - this.speed;
       if(Math.abs(this.x - block.x + xx) <= (block.width + this.width)/2 && Math.abs(this.y - block.y + yy) <= (block.height + this.height)/2 ) {
-
-
         canMove = false;
         return;
       }
